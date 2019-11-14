@@ -15,7 +15,8 @@ app.use('/wiki', wiki)
 
 
 app.get('/', (req, res) => {
-    console.log('hello world');
+    // console.log('hello world');
+    // res.redirect('/wiki');
     res.send(layout(""));
 })
 
