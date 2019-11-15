@@ -7,7 +7,7 @@ const wikiPage = require('../views/wikipage.js');
 
 wiki.get('/', (req, res, next) => {
     res.redirect('/');
-    res.send('got to GET /wiki/')
+    // res.send('got to GET /wiki/')
 })
 
 
@@ -20,8 +20,8 @@ wiki.get('/:slug', async (req, res, next) => {
 
     try{
     const findWikiPage = await Page.findOne({
-        where: { 
-            slug: req.params.slug 
+        where: {
+            slug: req.params.slug
         }
     })
 

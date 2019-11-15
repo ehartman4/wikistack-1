@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const layout = require('./views/layout');
+const main = require('./views/main');
 const user = require('./routes/user.js');
 const wiki = require('./routes/wiki.js')
 
@@ -14,10 +15,12 @@ app.use(express.urlencoded({extended: false}));
 app.use('/wiki', wiki)
 
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
     // console.log('hello world');
     // res.redirect('/wiki');
-    res.send(layout(""));
+    const wikiPages = await Page.findAll();
+    // res.send(layout(""));
+    res.send(main(wikiPages));
 })
 
 const init = async () => {
